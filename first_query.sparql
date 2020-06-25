@@ -9,4 +9,4 @@ SELECT ?band ?album ?genre WHERE {
   ?album rdf:type schema:MusicAlbum .
   ?band dbo:genre ?genre .
   ?album dbo:artist ?band .
-} LIMIT 100
+}
