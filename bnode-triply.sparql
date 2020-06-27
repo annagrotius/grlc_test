@@ -1,3 +1,5 @@
+#+ endpoint: https://krr.triply.cc/annadg/-/queries/Blank-Node-Entities-new
+
 PREFIX dct:    	<http://purl.org/dc/terms/>
 PREFIX oa:     	<http://www.w3.org/ns/oa#>
 PREFIX prov:   	<http://www.w3.org/ns/prov#>
