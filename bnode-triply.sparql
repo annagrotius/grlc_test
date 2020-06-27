@@ -1,0 +1,25 @@
+PREFIX dct:    	<http://purl.org/dc/terms/>
+PREFIX oa:     	<http://www.w3.org/ns/oa#>
+PREFIX prov:   	<http://www.w3.org/ns/prov#>
+PREFIX covid:  	<http://ns.inria.fr/covid19/>
+PREFIX covidpr:	<http://ns.inria.fr/covid19/property/>
+PREFIX schema: <http://schema.org/>
+PREFIX rdf: 	<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX hyp:     <http://example.org/hypothesis_ontology/>
+
+SELECT ?_NamedEntity ?entity_literal (group_concat(?entity_subject;separator=", ") as ?subjects) ?abstract ?confidence_score ?wiki_id
+WHERE 
+	{?_NamedEntity a  oa:Annotation, prov:Entity ;
+       			oa:hasTarget [
+      		oa:hasSource ?abstract;
+  			oa:hasSelector [
+       			 oa:exact ?entity_literal]];
+            dct:subject ?entity_subject;
+            #schema:about ?y ;
+            covidpr:confidence ?confidence_score ;
+            oa:hasBody ?wiki_id. #wikidata q-code  
+    ?abstract rdf:value ?value.
+  	filter contains(?value, "hypoth").
+  } 
+GROUP BY ?_NamedEntity ?entity_literal ?abstract ?confidence_score ?wiki_id
+
