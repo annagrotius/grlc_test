@@ -10,3 +10,4 @@ SELECT ?band ?album ?genre WHERE {
   ?band dbo:genre ?genre .
   ?album dbo:artist ?band .
 }
+LIMIT 50
